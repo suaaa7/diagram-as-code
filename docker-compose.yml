@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  diagrams:
+    container_name: diagrams
+    image: diagrams:0.1.0
+    build: .
+    tty: true
+    stdin_open: true
+    ipc: host
+    ports:
+      - "8887:8887"
+    volumes:
+      - ./notebook:/opt/notebook
+    environment:
+      - JUPYTER_CONFIG_DIR=/opt/notebook
+    working_dir: /opt/notebook
